@@ -12,11 +12,13 @@ struct ContentView: View {
     @EnvironmentObject private var quoteManager: QuoteDataManager
     @EnvironmentObject private var notificationManager: NotificationManager
     @State private var showingSettings = false
-    @State private var showingFullScreenQuote = false
+    
     @State private var selectedQuoteForFullScreen: Quote?
     
+    @State private var navigationPath = NavigationPath()
+    
     var body: some View {
-        NavigationView {
+        NavigationStack( path: $navigationPath) {
             ZStack {
                 // Background gradient based on theme
                 LinearGradient(
@@ -41,6 +43,9 @@ struct ContentView: View {
                         // Quick Actions
                         quickActionsView
                         
+                        // Extra Utility
+                        utilityButtons
+                        
                         Spacer(minLength: 50)
                     }
                     .padding(.horizontal, 20)
@@ -48,15 +53,29 @@ struct ContentView: View {
                 }
             }
             .navigationBarHidden(true)
-        }
-        .sheet(isPresented: $showingSettings) {
-            SettingsView(userSettings: userSettings, notificationManager: notificationManager, quoteManager: quoteManager)
-        }
-        .fullScreenCover(isPresented: $showingFullScreenQuote) {
-            if let quote = selectedQuoteForFullScreen {
-                FullScreenQuoteView(quote: quote, isPresented: $showingFullScreenQuote, theme: userSettings.selectedTheme)
+            .navigationDestination(for: String.self) {
+                destination in
+                
+                switch destination {
+                case "history":
+                    HistoryView()
+                case "settings":
+                    SettingsView(userSettings: userSettings, notificationManager: notificationManager, quoteManager: quoteManager)
+                default:
+                    EmptyView()
+                }
             }
         }
+        
+        .fullScreenCover(isPresented: Binding (
+            get: {selectedQuoteForFullScreen != nil},
+            set: { if !$0 {selectedQuoteForFullScreen = nil}}
+        )) {
+            if let quote = selectedQuoteForFullScreen {
+                FullScreenQuoteView(quote: quote, isPresented: Binding (get:{selectedQuoteForFullScreen != nil}, set: { if  !$0 {selectedQuoteForFullScreen = nil }}), theme: userSettings.selectedTheme)
+            }
+        }
+        
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowFullScreenQuote"))) { notification in
             if let userInfo = notification.userInfo,
                let quoteText = userInfo["quoteText"] as? String,
@@ -64,7 +83,6 @@ struct ContentView: View {
                let categoryString = userInfo["quoteCategory"] as? String,
                let category = Agenda(rawValue: categoryString) {
                 selectedQuoteForFullScreen = Quote(text: quoteText, author: quoteAuthor, category: category)
-                showingFullScreenQuote = true
             }
         }
         .onAppear {
@@ -87,7 +105,7 @@ struct ContentView: View {
             
             Spacer()
             
-            Button(action: { showingSettings = true }) {
+            Button(action: { navigationPath.append("settings") }) {
                 Image(systemName: "gearshape.fill")
                     .font(.title2)
                     .foregroundColor(.primary)
@@ -121,7 +139,6 @@ struct ContentView: View {
                         Button(action:  {
                             
                             selectedQuoteForFullScreen = currentQuote
-                            showingFullScreenQuote = true
                         }) {
                             Image(systemName: "arrow.up.left.and.arrow.down.right")
                                 .font(.caption)
@@ -221,7 +238,7 @@ struct ContentView: View {
                 title: "Reminders",
                 subtitle: "\(userSettings.reminderTimes.count) active",
                 color: getThemeColor("orange"),
-                action: { showingSettings = true }
+                action: { navigationPath.append("settings")}
             )
             
             QuickActionButton(
@@ -229,11 +246,29 @@ struct ContentView: View {
                 title: "Themes",
                 subtitle: userSettings.selectedTheme.rawValue,
                 color: getThemeColor("purple"),
-                action: { showingSettings = true }
+                action: { navigationPath.append("settings") }
             )
         }
     }
-    
+    private var utilityButtons: some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+            QuickActionButton(
+                icon: "clock.fill",
+                title: "History",
+                subtitle: "\(userSettings.reminderTimes.count) active",
+                color: getThemeColor("cyan"),
+                action: { navigationPath.append("history") }
+            )
+            
+            QuickActionButton(
+                icon: "plus",
+                title: "More",
+                subtitle: userSettings.selectedTheme.rawValue,
+                color: getThemeColor("purple"),
+                action: { navigationPath.append("settings") }
+            )
+        }
+    }
     private func getGreeting() -> String {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
@@ -297,4 +332,5 @@ struct QuickActionButton: View {
         .environmentObject(UserSettings())
         .environmentObject(NotificationManager())
         .environmentObject(QuoteDataManager())
+        
 }
