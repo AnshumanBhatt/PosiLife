@@ -16,77 +16,101 @@ struct ContentView: View {
     @State private var selectedQuoteForFullScreen: Quote?
     
     @State private var navigationPath = NavigationPath()
+    @State private var selectedTab: Tab = .home
+    
+    enum Tab {
+           case home, profile
+       }
     
     var body: some View {
-        NavigationStack( path: $navigationPath) {
-            ZStack {
-                // Background gradient based on theme
-                LinearGradient(
-                    gradient: Gradient(colors: [getThemeColor(userSettings.selectedTheme.primaryColor), getThemeColor(userSettings.selectedTheme.secondaryColor)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-                .opacity(0.1)
-                
-                ScrollView {
-                    VStack(spacing: 30) {
-                        // Header
-                        headerView
-                        
-                        // Current Quote Card
-                        currentQuoteCard
-                        
-                        // Agenda Progress
-                        agendaProgressCard
-                        
-                        // Quick Actions
-                        quickActionsView
-                        
-                        // Extra Utility
-                        utilityButtons
-                        
-                        Spacer(minLength: 50)
+        
+        
+        TabView(selection: $selectedTab ) {
+            NavigationStack( path: $navigationPath) {
+                ZStack {
+                    // Background gradient based on theme
+                    LinearGradient(
+                        gradient: Gradient(colors: [getThemeColor(userSettings.selectedTheme.primaryColor), getThemeColor(userSettings.selectedTheme.secondaryColor)]),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .ignoresSafeArea()
+                    .opacity(0.1)
+                    
+                    ScrollView {
+                        VStack(spacing: 30) {
+                            // Header
+                            headerView
+                            
+                            // Current Quote Card
+                            currentQuoteCard
+                            
+                            // Agenda Progress
+                            agendaProgressCard
+                            
+                            // Quick Actions
+                            quickActionsView
+                            
+                            // Extra Utility
+                            utilityButtons
+                            
+                            Spacer(minLength: 50)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 10)
+                }
+                .navigationBarHidden(true)
+                .navigationDestination(for: String.self) {
+                    destination in
+                    
+                    switch destination {
+                    case "history":
+                        HistoryView()
+                    case "settings":
+                        SettingsView(userSettings: userSettings, notificationManager: notificationManager, quoteManager: quoteManager)
+                    default:
+                        EmptyView()
+                    }
                 }
             }
-            .navigationBarHidden(true)
-            .navigationDestination(for: String.self) {
-                destination in
-                
-                switch destination {
-                case "history":
-                    HistoryView()
-                case "settings":
-                    SettingsView(userSettings: userSettings, notificationManager: notificationManager, quoteManager: quoteManager)
-                default:
-                    EmptyView()
+            .tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+            .tag(Tab.home)
+            
+            NavigationStack {
+                ProfileView()
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            
+            .tabItem{
+                Label("Profile", systemImage: "person.crop.circle")
+            }
+            .tag(Tab.profile)
+            
+            
+            .fullScreenCover(isPresented: Binding (
+                get: {selectedQuoteForFullScreen != nil},
+                set: { if !$0 {selectedQuoteForFullScreen = nil}}
+            )) {
+                if let quote = selectedQuoteForFullScreen {
+                    FullScreenQuoteView(quote: quote, isPresented: Binding (get:{selectedQuoteForFullScreen != nil}, set: { if  !$0 {selectedQuoteForFullScreen = nil }}), theme: userSettings.selectedTheme)
                 }
             }
-        }
-        
-        .fullScreenCover(isPresented: Binding (
-            get: {selectedQuoteForFullScreen != nil},
-            set: { if !$0 {selectedQuoteForFullScreen = nil}}
-        )) {
-            if let quote = selectedQuoteForFullScreen {
-                FullScreenQuoteView(quote: quote, isPresented: Binding (get:{selectedQuoteForFullScreen != nil}, set: { if  !$0 {selectedQuoteForFullScreen = nil }}), theme: userSettings.selectedTheme)
+            
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowFullScreenQuote"))) { notification in
+                if let userInfo = notification.userInfo,
+                   let quoteText = userInfo["quoteText"] as? String,
+                   let quoteAuthor = userInfo["quoteAuthor"] as? String,
+                   let categoryString = userInfo["quoteCategory"] as? String,
+                   let category = Agenda(rawValue: categoryString) {
+                    selectedQuoteForFullScreen = Quote(text: quoteText, author: quoteAuthor, category: category)
+                }
             }
-        }
-        
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowFullScreenQuote"))) { notification in
-            if let userInfo = notification.userInfo,
-               let quoteText = userInfo["quoteText"] as? String,
-               let quoteAuthor = userInfo["quoteAuthor"] as? String,
-               let categoryString = userInfo["quoteCategory"] as? String,
-               let category = Agenda(rawValue: categoryString) {
-                selectedQuoteForFullScreen = Quote(text: quoteText, author: quoteAuthor, category: category)
+            .onAppear {
+                setupInitialState()
             }
-        }
-        .onAppear {
-            setupInitialState()
         }
     }
     

@@ -6,23 +6,36 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
 @main
 struct PosiLifeApp: App {
     @StateObject private var userSettings = UserSettings()
     @StateObject private var quoteManager = QuoteDataManager()
     @StateObject private var notificationManager = NotificationManager()
+    @StateObject private var authManager = AuthenticationManager.shared
+    
+    init() {
+        // Configure Firebase
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(userSettings)
-                .environmentObject(quoteManager)
-                .environmentObject(notificationManager)
-                .onAppear {
-                    // Initialize the app
-                    setupInitialQuote()
-                }
+            if authManager.isAuthenticated {
+                ContentView()
+                    .environmentObject(userSettings)
+                    .environmentObject(quoteManager)
+                    .environmentObject(notificationManager)
+                    .environmentObject(authManager)
+                    .onAppear {
+                        // Initialize the app
+                        setupInitialQuote()
+                    }
+            } else {
+                SignInView()
+                    .environmentObject(authManager)
+            }
         }
     }
     
