@@ -16,15 +16,30 @@
 		0255F94E2E977E8400E3AFBC /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F94D2E977E8400E3AFBC /* GoogleSignInSwift */; };
 		0255F9512E977EC700E3AFBC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F9502E977EC700E3AFBC /* FirebaseAuth */; };
 		0255F9532E977EC700E3AFBC /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F9522E977EC700E3AFBC /* FirebaseCore */; };
+		02BDE16D2E99018E00AE75DE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 02BDE16C2E99018E00AE75DE /* FirebaseFirestore */; };
+		02BDE16F2E99018E00AE75DE /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 02BDE16E2E99018E00AE75DE /* FirebaseFirestoreCombine-Community */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0256ED442E6B2866008A55FB /* PosiLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosiLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		02BDE1322E98E61000AE75DE /* Exceptions for "PosiLife" folder in "PosiLife" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0256ED432E6B2866008A55FB /* PosiLife */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0256ED462E6B2866008A55FB /* PosiLife */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				02BDE1322E98E61000AE75DE /* Exceptions for "PosiLife" folder in "PosiLife" target */,
+			);
 			path = PosiLife;
 			sourceTree = "<group>";
 		};
@@ -38,7 +53,9 @@
 				0255F8E22E96661800E3AFBC /* FirebaseAnalyticsIdentitySupport in Frameworks */,
 				0255F8DE2E96661800E3AFBC /* FirebaseAnalytics in Frameworks */,
 				0255F94E2E977E8400E3AFBC /* GoogleSignInSwift in Frameworks */,
+				02BDE16D2E99018E00AE75DE /* FirebaseFirestore in Frameworks */,
 				0255F8E02E96661800E3AFBC /* FirebaseAnalyticsCore in Frameworks */,
+				02BDE16F2E99018E00AE75DE /* FirebaseFirestoreCombine-Community in Frameworks */,
 				0255F8E42E96661800E3AFBC /* FirebaseAppCheck in Frameworks */,
 				0255F8DC2E96661800E3AFBC /* FirebaseAI in Frameworks */,
 				0255F94C2E977E8400E3AFBC /* GoogleSignIn in Frameworks */,
@@ -126,6 +143,8 @@
 				0255F94D2E977E8400E3AFBC /* GoogleSignInSwift */,
 				0255F9502E977EC700E3AFBC /* FirebaseAuth */,
 				0255F9522E977EC700E3AFBC /* FirebaseCore */,
+				02BDE16C2E99018E00AE75DE /* FirebaseFirestore */,
+				02BDE16E2E99018E00AE75DE /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = PosiLife;
 			productReference = 0256ED442E6B2866008A55FB /* PosiLife.app */;
@@ -666,6 +685,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0255F8DA2E96661800E3AFBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		02BDE16C2E99018E00AE75DE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0255F8DA2E96661800E3AFBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		02BDE16E2E99018E00AE75DE /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0255F8DA2E96661800E3AFBC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
