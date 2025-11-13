@@ -23,7 +23,7 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        NavigationView {
+        
             Form {
                 notificationSection
                 agendaSection
@@ -32,6 +32,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
@@ -46,7 +47,7 @@ struct SettingsView: View {
                     }
                 }
             }
-        }
+        
     }
     
     private var notificationSection: some View {

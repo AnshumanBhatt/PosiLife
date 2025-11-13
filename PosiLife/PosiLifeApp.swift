@@ -21,9 +21,9 @@ struct PosiLifeApp: App {
     }
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup { 
             if authManager.isAuthenticated {
-                ContentView()
+                ContentViewWrapper(userSettings: userSettings)
                     .environmentObject(userSettings)
                     .environmentObject(quoteManager)
                     .environmentObject(notificationManager)
@@ -33,7 +33,7 @@ struct PosiLifeApp: App {
                         setupInitialQuote()
                     }
             } else {
-                SignInView()
+                SignInViewWrapper(userSettings: userSettings)
                     .environmentObject(authManager)
             }
         }
@@ -48,5 +48,37 @@ struct PosiLifeApp: App {
                 quotes: quoteManager.allQuotes
             )
         }
+    }
+}
+
+// MARK: - Wrapper Views for ThemeManager Injection
+
+struct ContentViewWrapper: View {
+    @ObservedObject var userSettings: UserSettings
+    @StateObject private var themeManager: ThemeManager
+    
+    init(userSettings: UserSettings) {
+        self.userSettings = userSettings
+        _themeManager = StateObject(wrappedValue: ThemeManager(userSettings: userSettings))
+    }
+    
+    var body: some View {
+        ContentView()
+            .environmentObject(themeManager)
+    }
+}
+
+struct SignInViewWrapper: View {
+    @ObservedObject var userSettings: UserSettings
+    @StateObject private var themeManager: ThemeManager
+    
+    init(userSettings: UserSettings) {
+        self.userSettings = userSettings
+        _themeManager = StateObject(wrappedValue: ThemeManager(userSettings: userSettings))
+    }
+    
+    var body: some View {
+        SignInView()
+            .environmentObject(themeManager)
     }
 }

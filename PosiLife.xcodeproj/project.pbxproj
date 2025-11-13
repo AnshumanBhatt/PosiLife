@@ -7,35 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0247FE302EC5B1FD0008DEE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0247FE162EC5B1FD0008DEE5 /* Preview Assets.xcassets */; };
-		0247FE312EC5B1FD0008DEE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0247FE2A2EC5B1FD0008DEE5 /* Assets.xcassets */; };
-		0247FE322EC5B1FD0008DEE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0247FE2C2EC5B1FD0008DEE5 /* GoogleService-Info.plist */; };
-		0247FE342EC5B1FD0008DEE5 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE0F2EC5B1FD0008DEE5 /* Color+Theme.swift */; };
-		0247FE352EC5B1FD0008DEE5 /* CompletedGoals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE112EC5B1FD0008DEE5 /* CompletedGoals.swift */; };
-		0247FE362EC5B1FD0008DEE5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE122EC5B1FD0008DEE5 /* Quote.swift */; };
-		0247FE372EC5B1FD0008DEE5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE132EC5B1FD0008DEE5 /* UserProfile.swift */; };
-		0247FE382EC5B1FD0008DEE5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE142EC5B1FD0008DEE5 /* UserSettings.swift */; };
-		0247FE392EC5B1FD0008DEE5 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE182EC5B1FD0008DEE5 /* AuthenticationManager.swift */; };
-		0247FE3A2EC5B1FD0008DEE5 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE192EC5B1FD0008DEE5 /* HistoryManager.swift */; };
-		0247FE3B2EC5B1FD0008DEE5 /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE1A2EC5B1FD0008DEE5 /* HistoryRepository.swift */; };
-		0247FE3C2EC5B1FD0008DEE5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE1B2EC5B1FD0008DEE5 /* NotificationManager.swift */; };
-		0247FE3D2EC5B1FD0008DEE5 /* QuoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE1C2EC5B1FD0008DEE5 /* QuoteDataManager.swift */; };
-		0247FE3E2EC5B1FD0008DEE5 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE1E2EC5B1FD0008DEE5 /* PieChartView.swift */; };
-		0247FE3F2EC5B1FD0008DEE5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE1F2EC5B1FD0008DEE5 /* ThemeManager.swift */; };
-		0247FE402EC5B1FD0008DEE5 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE212EC5B1FD0008DEE5 /* HistoryViewModel.swift */; };
-		0247FE412EC5B1FD0008DEE5 /* FullScreenQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE232EC5B1FD0008DEE5 /* FullScreenQuoteView.swift */; };
-		0247FE422EC5B1FD0008DEE5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE242EC5B1FD0008DEE5 /* HistoryView.swift */; };
-		0247FE432EC5B1FD0008DEE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE252EC5B1FD0008DEE5 /* ProfileView.swift */; };
-		0247FE442EC5B1FD0008DEE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE262EC5B1FD0008DEE5 /* SettingsView.swift */; };
-		0247FE452EC5B1FD0008DEE5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE272EC5B1FD0008DEE5 /* SignInView.swift */; };
-		0247FE462EC5B1FD0008DEE5 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE282EC5B1FD0008DEE5 /* SignUpView.swift */; };
-		0247FE472EC5B1FD0008DEE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE2B2EC5B1FD0008DEE5 /* ContentView.swift */; };
-		0247FE482EC5B1FD0008DEE5 /* PosiLifeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE2E2EC5B1FD0008DEE5 /* PosiLifeApp.swift */; };
-		0247FE4A2EC5B32D0008DEE5 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE492EC5B32D0008DEE5 /* EditProfileView.swift */; };
-		0247FE4C2EC5B3360008DEE5 /* HelpSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE4B2EC5B3360008DEE5 /* HelpSupportView.swift */; };
-		0247FE4E2EC5B3410008DEE5 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE4D2EC5B3410008DEE5 /* NotificationsView.swift */; };
-		0247FE502EC5B3460008DEE5 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE4F2EC5B3460008DEE5 /* PaymentMethodsView.swift */; };
-		0247FE522EC5B34C0008DEE5 /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0247FE512EC5B34C0008DEE5 /* PrivacySettingsView.swift */; };
 		0255F8DC2E96661800E3AFBC /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F8DB2E96661800E3AFBC /* FirebaseAI */; };
 		0255F8DE2E96661800E3AFBC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F8DD2E96661800E3AFBC /* FirebaseAnalytics */; };
 		0255F8E02E96661800E3AFBC /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0255F8DF2E96661800E3AFBC /* FirebaseAnalyticsCore */; };
@@ -50,38 +21,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0247FE0F2EC5B1FD0008DEE5 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
-		0247FE112EC5B1FD0008DEE5 /* CompletedGoals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGoals.swift; sourceTree = "<group>"; };
-		0247FE122EC5B1FD0008DEE5 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
-		0247FE132EC5B1FD0008DEE5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		0247FE142EC5B1FD0008DEE5 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		0247FE162EC5B1FD0008DEE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0247FE182EC5B1FD0008DEE5 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
-		0247FE192EC5B1FD0008DEE5 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
-		0247FE1A2EC5B1FD0008DEE5 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
-		0247FE1B2EC5B1FD0008DEE5 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		0247FE1C2EC5B1FD0008DEE5 /* QuoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDataManager.swift; sourceTree = "<group>"; };
-		0247FE1E2EC5B1FD0008DEE5 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
-		0247FE1F2EC5B1FD0008DEE5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		0247FE212EC5B1FD0008DEE5 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		0247FE232EC5B1FD0008DEE5 /* FullScreenQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenQuoteView.swift; sourceTree = "<group>"; };
-		0247FE242EC5B1FD0008DEE5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		0247FE252EC5B1FD0008DEE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		0247FE262EC5B1FD0008DEE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		0247FE272EC5B1FD0008DEE5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		0247FE282EC5B1FD0008DEE5 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		0247FE2A2EC5B1FD0008DEE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0247FE2B2EC5B1FD0008DEE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0247FE2C2EC5B1FD0008DEE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0247FE2D2EC5B1FD0008DEE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0247FE2E2EC5B1FD0008DEE5 /* PosiLifeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosiLifeApp.swift; sourceTree = "<group>"; };
-		0247FE492EC5B32D0008DEE5 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		0247FE4B2EC5B3360008DEE5 /* HelpSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSupportView.swift; sourceTree = "<group>"; };
-		0247FE4D2EC5B3410008DEE5 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		0247FE4F2EC5B3460008DEE5 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
-		0247FE512EC5B34C0008DEE5 /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsView.swift; sourceTree = "<group>"; };
 		0256ED442E6B2866008A55FB /* PosiLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosiLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		02BDE1322E98E61000AE75DE /* Exceptions for "PosiLife" folder in "PosiLife" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0256ED432E6B2866008A55FB /* PosiLife */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0256ED462E6B2866008A55FB /* PosiLife */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				02BDE1322E98E61000AE75DE /* Exceptions for "PosiLife" folder in "PosiLife" target */,
+			);
+			path = PosiLife;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0256ED412E6B2866008A55FB /* Frameworks */ = {
@@ -105,99 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0247FE102EC5B1FD0008DEE5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE0F2EC5B1FD0008DEE5 /* Color+Theme.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		0247FE152EC5B1FD0008DEE5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE112EC5B1FD0008DEE5 /* CompletedGoals.swift */,
-				0247FE122EC5B1FD0008DEE5 /* Quote.swift */,
-				0247FE132EC5B1FD0008DEE5 /* UserProfile.swift */,
-				0247FE142EC5B1FD0008DEE5 /* UserSettings.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		0247FE172EC5B1FD0008DEE5 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE162EC5B1FD0008DEE5 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0247FE1D2EC5B1FD0008DEE5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE182EC5B1FD0008DEE5 /* AuthenticationManager.swift */,
-				0247FE192EC5B1FD0008DEE5 /* HistoryManager.swift */,
-				0247FE1A2EC5B1FD0008DEE5 /* HistoryRepository.swift */,
-				0247FE1B2EC5B1FD0008DEE5 /* NotificationManager.swift */,
-				0247FE1C2EC5B1FD0008DEE5 /* QuoteDataManager.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		0247FE202EC5B1FD0008DEE5 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE1E2EC5B1FD0008DEE5 /* PieChartView.swift */,
-				0247FE1F2EC5B1FD0008DEE5 /* ThemeManager.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		0247FE222EC5B1FD0008DEE5 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE212EC5B1FD0008DEE5 /* HistoryViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		0247FE292EC5B1FD0008DEE5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE4B2EC5B3360008DEE5 /* HelpSupportView.swift */,
-				0247FE492EC5B32D0008DEE5 /* EditProfileView.swift */,
-				0247FE232EC5B1FD0008DEE5 /* FullScreenQuoteView.swift */,
-				0247FE4D2EC5B3410008DEE5 /* NotificationsView.swift */,
-				0247FE4F2EC5B3460008DEE5 /* PaymentMethodsView.swift */,
-				0247FE242EC5B1FD0008DEE5 /* HistoryView.swift */,
-				0247FE252EC5B1FD0008DEE5 /* ProfileView.swift */,
-				0247FE512EC5B34C0008DEE5 /* PrivacySettingsView.swift */,
-				0247FE262EC5B1FD0008DEE5 /* SettingsView.swift */,
-				0247FE272EC5B1FD0008DEE5 /* SignInView.swift */,
-				0247FE282EC5B1FD0008DEE5 /* SignUpView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		0247FE2F2EC5B1FD0008DEE5 /* PosiLife */ = {
-			isa = PBXGroup;
-			children = (
-				0247FE102EC5B1FD0008DEE5 /* Extensions */,
-				0247FE152EC5B1FD0008DEE5 /* Models */,
-				0247FE172EC5B1FD0008DEE5 /* Preview Content */,
-				0247FE1D2EC5B1FD0008DEE5 /* Services */,
-				0247FE202EC5B1FD0008DEE5 /* Utilities */,
-				0247FE222EC5B1FD0008DEE5 /* ViewModels */,
-				0247FE292EC5B1FD0008DEE5 /* Views */,
-				0247FE2A2EC5B1FD0008DEE5 /* Assets.xcassets */,
-				0247FE2B2EC5B1FD0008DEE5 /* ContentView.swift */,
-				0247FE2C2EC5B1FD0008DEE5 /* GoogleService-Info.plist */,
-				0247FE2D2EC5B1FD0008DEE5 /* Info.plist */,
-				0247FE2E2EC5B1FD0008DEE5 /* PosiLifeApp.swift */,
-			);
-			path = PosiLife;
-			sourceTree = "<group>";
-		};
 		0255F94F2E977EC700E3AFBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +77,7 @@
 		0256ED3B2E6B2866008A55FB = {
 			isa = PBXGroup;
 			children = (
-				0247FE2F2EC5B1FD0008DEE5 /* PosiLife */,
+				0256ED462E6B2866008A55FB /* PosiLife */,
 				0255F94F2E977EC700E3AFBC /* Frameworks */,
 				0256ED452E6B2866008A55FB /* Products */,
 			);
@@ -259,6 +128,9 @@
 				0255F9452E977CC900E3AFBC /* PBXTargetDependency */,
 				0255F9472E977CC900E3AFBC /* PBXTargetDependency */,
 				0255F9492E977CC900E3AFBC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0256ED462E6B2866008A55FB /* PosiLife */,
 			);
 			name = PosiLife;
 			packageProductDependencies = (
@@ -321,9 +193,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0247FE302EC5B1FD0008DEE5 /* Preview Assets.xcassets in Resources */,
-				0247FE312EC5B1FD0008DEE5 /* Assets.xcassets in Resources */,
-				0247FE322EC5B1FD0008DEE5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,32 +203,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0247FE342EC5B1FD0008DEE5 /* Color+Theme.swift in Sources */,
-				0247FE352EC5B1FD0008DEE5 /* CompletedGoals.swift in Sources */,
-				0247FE362EC5B1FD0008DEE5 /* Quote.swift in Sources */,
-				0247FE372EC5B1FD0008DEE5 /* UserProfile.swift in Sources */,
-				0247FE382EC5B1FD0008DEE5 /* UserSettings.swift in Sources */,
-				0247FE392EC5B1FD0008DEE5 /* AuthenticationManager.swift in Sources */,
-				0247FE3A2EC5B1FD0008DEE5 /* HistoryManager.swift in Sources */,
-				0247FE3B2EC5B1FD0008DEE5 /* HistoryRepository.swift in Sources */,
-				0247FE3C2EC5B1FD0008DEE5 /* NotificationManager.swift in Sources */,
-				0247FE3D2EC5B1FD0008DEE5 /* QuoteDataManager.swift in Sources */,
-				0247FE3E2EC5B1FD0008DEE5 /* PieChartView.swift in Sources */,
-				0247FE3F2EC5B1FD0008DEE5 /* ThemeManager.swift in Sources */,
-				0247FE522EC5B34C0008DEE5 /* PrivacySettingsView.swift in Sources */,
-				0247FE402EC5B1FD0008DEE5 /* HistoryViewModel.swift in Sources */,
-				0247FE412EC5B1FD0008DEE5 /* FullScreenQuoteView.swift in Sources */,
-				0247FE4A2EC5B32D0008DEE5 /* EditProfileView.swift in Sources */,
-				0247FE422EC5B1FD0008DEE5 /* HistoryView.swift in Sources */,
-				0247FE432EC5B1FD0008DEE5 /* ProfileView.swift in Sources */,
-				0247FE442EC5B1FD0008DEE5 /* SettingsView.swift in Sources */,
-				0247FE452EC5B1FD0008DEE5 /* SignInView.swift in Sources */,
-				0247FE4C2EC5B3360008DEE5 /* HelpSupportView.swift in Sources */,
-				0247FE462EC5B1FD0008DEE5 /* SignUpView.swift in Sources */,
-				0247FE502EC5B3460008DEE5 /* PaymentMethodsView.swift in Sources */,
-				0247FE472EC5B1FD0008DEE5 /* ContentView.swift in Sources */,
-				0247FE482EC5B1FD0008DEE5 /* PosiLifeApp.swift in Sources */,
-				0247FE4E2EC5B3410008DEE5 /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,12 +66,12 @@ struct SignUpView: View {
                             TextField("Username", text: $username)
                                 .textContentType(.username)
                                 .autocapitalization(.none)
-                                .themedForeground("primaryText")
+                                .foregroundColor(.black)
                         }
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.2))
+                                .fill(Color.white.opacity(0.9))
                         )
                         .padding(.horizontal, 40)
                         
@@ -85,12 +85,12 @@ struct SignUpView: View {
                                 .textContentType(.emailAddress)
                                 .autocapitalization(.none)
                                 .keyboardType(.emailAddress)
-                                .themedForeground("primaryText")
+                                .foregroundColor(.black)
                         }
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.2))
+                                .fill(Color.white.opacity(0.9))
                         )
                         .padding(.horizontal, 40)
                         
@@ -104,12 +104,12 @@ struct SignUpView: View {
                                 TextField("Password", text: $password)
                                     .textContentType(.newPassword)
                                     .autocapitalization(.none)
-                                    .themedForeground("primaryText")
+                                    .foregroundColor(.black)
                             } else {
                                 SecureField("Password", text: $password)
                                     .textContentType(.newPassword)
                                     .autocapitalization(.none)
-                                    .themedForeground("primaryText")
+                                    .foregroundColor(.black)
                             }
                             
                             Button(action: {
@@ -122,7 +122,7 @@ struct SignUpView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.2))
+                                .fill(Color.white.opacity(0.9))
                         )
                         .padding(.horizontal, 40)
                         
@@ -133,19 +133,19 @@ struct SignUpView: View {
                             HStack(spacing: 12) {
                                 if isLoading {
                                     ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 } else {
                                     Text("Create Account")
                                         .font(.headline)
                                         .fontWeight(.semibold)
                                 }
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .themedForeground("primaryText")
+                                    .fill(Color.deepLavender)
                                     .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }
@@ -196,12 +196,12 @@ struct SignUpView: View {
                                     .fontWeight(.semibold)
                                     .themedForeground("primaryText")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .themedForeground("primaryText")
+                                    .fill(Color.deepLavender)
                                     .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }

@@ -71,12 +71,12 @@ struct SignInView: View {
                                 .textContentType(.emailAddress)
                                 .autocapitalization(.none)
                                 .keyboardType(.emailAddress)
-                                .themedForeground("primaryText")
+                                .foregroundColor(.black)
                         }
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .themedForeground("primaryText")
+                                .fill(Color.white.opacity(0.9))
                         )
                         .padding(.horizontal, 40)
                         
@@ -90,12 +90,12 @@ struct SignInView: View {
                                 TextField("Password", text: $password)
                                     .textContentType(.password)
                                     .autocapitalization(.none)
-                                    .themedForeground("primaryText")
+                                    .foregroundColor(.black)
                             } else {
                                 SecureField("Password", text: $password)
                                     .textContentType(.password)
                                     .autocapitalization(.none)
-                                    .themedForeground("primaryText")
+                                    .foregroundColor(.black)
                             }
                             
                             Button(action: {
@@ -108,7 +108,7 @@ struct SignInView: View {
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .themedForeground("primaryText")
+                                .fill(Color.white.opacity(0.9))
                         )
                         .padding(.horizontal, 40)
                         
@@ -119,19 +119,19 @@ struct SignInView: View {
                             HStack(spacing: 12) {
                                 if isLoading {
                                     ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 } else {
                                     Text("Sign In")
                                         .font(.headline)
                                         .fontWeight(.semibold)
                                 }
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .themedForeground("primaryText")
+                                    .fill(Color.deepLavender)
                                     .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }
@@ -183,12 +183,12 @@ struct SignInView: View {
                                     .fontWeight(.semibold)
                                     .themedForeground("primaryText")
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .themedForeground("primaryText")
+                                    .fill(Color.deepLavender)
                                     .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }
