@@ -109,20 +109,30 @@ struct ProfileView: View {
                     
                     // MARK: - Options List
                     List {
-                        ForEach(options, id: \.self) { option in
-                            HStack {
-                                
-                                Text(option)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.gray)
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                handleOptionTap(option)
-                            }
-                        }
-                    }
+    ForEach(options, id: \.self) { option in
+        if option == "Sign Out" || option == "Delete Account" {
+            HStack {
+                Text(option)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.gray)
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                handleOptionTap(option)
+            }
+        } else {
+            NavigationLink(destination: destinationView(for: option)) {
+                HStack {
+                    Text(option)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+    }
+}
                     .listStyle(InsetGroupedListStyle())
                     
                     Spacer()
@@ -155,6 +165,25 @@ struct ProfileView: View {
             }
         }
     
+    // MARK: - Navigation Destinations
+    @ViewBuilder
+    private func destinationView(for option: String) -> some View {
+        switch option {
+        case "Edit Profile":
+            EditProfileView()
+        case "Notifications":
+            NotificationsView()
+        case "Privacy Settings":
+            PrivacySettingsView()
+        case "Payment Methods":
+            PaymentMethodsView()
+        case "Help & Support":
+            HelpSupportView()
+        default:
+            EmptyView()
+        }
+    }
+
     // MARK: - Helper Functions
     private func handleOptionTap(_ option: String) {
         switch option {
