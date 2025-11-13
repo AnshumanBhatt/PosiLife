@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class ThemeManager: ObservableObject {
-    @Published var currentTheme: AppTheme = .serenePink
+    @Published var currentTheme: AppTheme = .cozyLavender
     @Published var currentAgenda: Agenda = .general
     
     init(userSettings: UserSettings) {

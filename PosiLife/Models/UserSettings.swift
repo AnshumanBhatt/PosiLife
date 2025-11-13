@@ -13,7 +13,7 @@ class UserSettings: ObservableObject {
     @Published var agendaDuration: Int = 60 // days
     @Published var reminderTimes: [Date] = [Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date()) ?? Date()]
     @Published var quotesPerDay: Int = 3
-    @Published var selectedTheme: AppTheme = .serenePink
+    @Published var selectedTheme: AppTheme = .cozyLavender
     @Published var notificationsEnabled: Bool = false
     
     private let userDefaults = UserDefaults.standard
@@ -72,6 +72,7 @@ class UserSettings: ObservableObject {
 }
 
 enum AppTheme: String, CaseIterable, Codable {
+    case cozyLavender = "Cozy Lavender"
     case serenePink = "Serene Pink"
     case lavenderDream = "Lavender Dream"
     case peaceful = "Peaceful"
@@ -79,6 +80,7 @@ enum AppTheme: String, CaseIterable, Codable {
     
     var primaryColor: String {
         switch self {
+        case .cozyLavender: return "cozyLavender"
         case .serenePink: return "softPink"
         case .lavenderDream: return "lavender"
         case .peaceful: return "sage"
@@ -88,6 +90,7 @@ enum AppTheme: String, CaseIterable, Codable {
     
     var backgroundColor: String {
         switch self {
+        case .cozyLavender: return "lavenderMist"
         case .serenePink: return "pinkBackground"
         case .lavenderDream: return "purpleBackground"
         case .peaceful: return "peacefulBackground"
@@ -97,6 +100,7 @@ enum AppTheme: String, CaseIterable, Codable {
     
     var secondaryColor: String {
         switch self {
+        case .cozyLavender: return "softLavender"
         case .serenePink: return "lightPink"
         case .lavenderDream: return "lightLavender"
         case .peaceful: return "lightSage"
@@ -106,8 +110,9 @@ enum AppTheme: String, CaseIterable, Codable {
     
     var gradientColors: [String] {
         switch self {
+        case .cozyLavender: return ["cozyLavender", "softLavender", "paleLavender"]
         case .serenePink: return ["softPink", "lightPink", "pinkBackground"]
-        case .lavenderDream: return ["lavender", "lightLavender", "paleLavender"]
+        case .lavenderDream: return ["lavender", "lightLavender", "dreamLavender"]
         case .peaceful: return ["sage", "lightSage", "paleGreen"]
         case .agendaBased: return ["adaptiveColor", "adaptiveSecondary"]
         }

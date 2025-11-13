@@ -85,27 +85,39 @@ class AuthenticationManager: ObservableObject {
     
     // MARK: - Email/Password Authentication
     func signUp(username: String, email: String, password: String) async throws {
+        print("🔍 DEBUG: Starting sign up process...")
+        print("🔍 DEBUG: Username: \(username), Email: \(email)")
+        
         // Validate inputs
         guard !username.isEmpty else {
+            print("🔍 DEBUG: Username validation failed - empty")
             throw AuthError.invalidUsername
         }
         
         guard !email.isEmpty else {
+            print("🔍 DEBUG: Email validation failed - empty")
             throw AuthError.invalidEmail
         }
         
         guard password.count >= 6 else {
+            print("🔍 DEBUG: Password validation failed - too short")
             throw AuthError.weakPassword
         }
         
         // Create user in Firebase Auth
+        print("🔍 DEBUG: Creating user in Firebase Auth...")
         let authResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        print("🔍 DEBUG: Firebase Auth user created with UID: \(authResult.user.uid)")
         
         // Create user profile in Firestore
         let profile = UserProfile(id: authResult.user.uid, username: username, email: email)
+        print("🔍 DEBUG: Created UserProfile: \(profile)")
+        
         try await saveUserProfile(profile)
+        print("🔍 DEBUG: UserProfile saved to Firestore")
         
         self.userProfile = profile
+        print("🔍 DEBUG: UserProfile set in AuthenticationManager: \(self.userProfile?.username ?? "nil")")
     }
     
     func signIn(email: String, password: String) async throws {
@@ -128,18 +140,33 @@ class AuthenticationManager: ObservableObject {
     // MARK: - User Profile Management
     private func saveUserProfile(_ profile: UserProfile) async throws {
         guard let userId = profile.id else {
+            print("🔍 DEBUG: saveUserProfile failed - no userId")
             throw AuthError.noUser
         }
         
+        print("🔍 DEBUG: Saving profile to Firestore for userId: \(userId)")
+        print("🔍 DEBUG: Profile data: username=\(profile.username), email=\(profile.email)")
+        
         try db.collection("users").document(userId).setData(from: profile)
+        print("🔍 DEBUG: Profile successfully saved to Firestore")
     }
     
     private func loadUserProfile(userId: String) async {
+        print("🔍 DEBUG: Loading user profile for userId: \(userId)")
         do {
             let snapshot = try await db.collection("users").document(userId).getDocument()
-            self.userProfile = try snapshot.data(as: UserProfile.self)
+            print("🔍 DEBUG: Firestore document exists: \(snapshot.exists)")
+            
+            if snapshot.exists {
+                self.userProfile = try snapshot.data(as: UserProfile.self)
+                print("🔍 DEBUG: Successfully loaded userProfile: \(self.userProfile?.username ?? "nil")")
+            } else {
+                print("🔍 DEBUG: No user profile document found in Firestore")
+                self.userProfile = nil
+            }
         } catch {
-            print("Error loading user profile: \(error.localizedDescription)")
+            print("🔍 DEBUG: Error loading user profile: \(error.localizedDescription)")
+            print("🔍 DEBUG: Full error: \(error)")
         }
     }
     

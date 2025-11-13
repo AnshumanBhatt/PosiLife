@@ -8,6 +8,14 @@
 import SwiftUI
 
 extension Color {
+    // MARK: - Cozy Lavender Theme Colors (Default App Theme)
+    static let cozyLavender = Color(red: 0.88, green: 0.85, blue: 0.95)        // Main lavender
+    static let softLavender = Color(red: 0.92, green: 0.90, blue: 0.97)        // Lighter lavender
+    static let paleLavender = Color(red: 0.96, green: 0.94, blue: 0.99)        // Very light lavender
+    static let warmLavender = Color(red: 0.85, green: 0.82, blue: 0.93)        // Slightly warmer
+    static let lavenderMist = Color(red: 0.98, green: 0.97, blue: 0.99)        // Background
+    static let deepLavender = Color(red: 0.75, green: 0.70, blue: 0.88)        // For accents
+    
     // MARK: - Peaceful Pink Theme Colors
     static let softPink = Color(red: 0.98, green: 0.85, blue: 0.87)
     static let lightPink = Color(red: 0.96, green: 0.80, blue: 0.83)
@@ -17,7 +25,7 @@ extension Color {
     // MARK: - Lavender/Purple Theme Colors
     static let lavender = Color(red: 0.90, green: 0.85, blue: 0.98)
     static let lightLavender = Color(red: 0.92, green: 0.88, blue: 0.99)
-    static let paleLavender = Color(red: 0.95, green: 0.92, blue: 0.99)
+    static let dreamLavender = Color(red: 0.95, green: 0.92, blue: 0.99)
     static let lightPurple = Color(red: 0.88, green: 0.82, blue: 0.96)
     static let purpleBackground = Color(red: 0.97, green: 0.95, blue: 0.99)
     
@@ -86,6 +94,14 @@ extension Color {
         }
         
         switch colorName {
+        // Cozy Lavender Theme Colors (Default)
+        case "cozyLavender": return .cozyLavender
+        case "softLavender": return .softLavender
+        case "paleLavender": return .paleLavender
+        case "warmLavender": return .warmLavender
+        case "lavenderMist": return .lavenderMist
+        case "deepLavender": return .deepLavender
+        
         // Basic colors
         case "pink": return .pink
         case "purple": return .purple
@@ -109,6 +125,7 @@ extension Color {
         
         case "lavender": return .lavender
         case "lightLavender": return .lightLavender
+        case "dreamLavender": return .dreamLavender
         case "paleLavender": return .paleLavender
         case "lightPurple": return .lightPurple
         case "purpleBackground": return .purpleBackground

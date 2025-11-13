@@ -19,7 +19,22 @@ struct ProfileView: View {
     }
     
     var userName: String {
-        authManager.user?.displayName ?? "User"
+        print("🔍 DEBUG: Getting username...")
+        print("🔍 DEBUG: authManager.user?.displayName = \(authManager.user?.displayName ?? "nil")")
+        print("🔍 DEBUG: authManager.userProfile?.username = \(authManager.userProfile?.username ?? "nil")")
+        print("🔍 DEBUG: authManager.user?.email = \(authManager.user?.email ?? "nil")")
+        
+        // First try to get username from userProfile, then fallback to displayName, then "User"
+        if let username = authManager.userProfile?.username, !username.isEmpty {
+            print("🔍 DEBUG: Using userProfile.username: \(username)")
+            return username
+        } else if let displayName = authManager.user?.displayName, !displayName.isEmpty {
+            print("🔍 DEBUG: Using user.displayName: \(displayName)")
+            return displayName
+        } else {
+            print("🔍 DEBUG: Using fallback: User")
+            return "User"
+        }
     }
     
     var userEmail: String {

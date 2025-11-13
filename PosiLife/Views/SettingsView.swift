@@ -64,34 +64,42 @@ struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Reminder Times")
                         .font(.headline)
-                    
-                    ForEach(Array(userSettings.reminderTimes.enumerated()), id: \.offset) { index, time in
-                        HStack {
-                            DatePicker(
-                                "Reminder \(index + 1)",
-                                selection: Binding(
-                                    get: { userSettings.reminderTimes[index] },
-                                    set: { userSettings.reminderTimes[index] = $0 }
-                                ),
-                                displayedComponents: .hourAndMinute
-                            )
-                            
-                            if userSettings.reminderTimes.count > 1 {
-                                Button("Remove") {
+                }
+                
+                ForEach(0..<userSettings.reminderTimes.count, id: \.self) { index in
+                    HStack {
+                        DatePicker(
+                            "Reminder \(index + 1)",
+                            selection: Binding(
+                                get: { 
+                                    guard index < userSettings.reminderTimes.count else { return Date() }
+                                    return userSettings.reminderTimes[index] 
+                                },
+                                set: { 
+                                    guard index < userSettings.reminderTimes.count else { return }
+                                    userSettings.reminderTimes[index] = $0 
+                                }
+                            ),
+                            displayedComponents: .hourAndMinute
+                        )
+                        
+                        if userSettings.reminderTimes.count > 1 {
+                            Button("Remove") {
+                                if index < userSettings.reminderTimes.count {
                                     userSettings.reminderTimes.remove(at: index)
                                 }
-                                .foregroundColor(.red)
-                                .font(.caption)
                             }
+                            .foregroundColor(.red)
+                            .font(.caption)
                         }
                     }
-                    
-                    if userSettings.reminderTimes.count < 5 {
-                        Button("Add Reminder") {
-                            userSettings.reminderTimes.append(newReminderTime)
-                        }
-                        .foregroundColor(.blue)
+                }
+                
+                if userSettings.reminderTimes.count < 5 {
+                    Button("Add Reminder") {
+                        userSettings.reminderTimes.append(newReminderTime)
                     }
+                    .foregroundColor(.blue)
                 }
                 
                 Stepper(

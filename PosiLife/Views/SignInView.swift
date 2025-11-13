@@ -11,10 +11,9 @@ struct SignInView: View {
     @StateObject private var authManager = AuthenticationManager.shared
     @State private var isLoading = false
     @State private var showError = false
-    @State private var isSignUpMode = false
+    @State private var showSignUp = false
     
     // Form fields
-    @State private var username = ""
     @State private var email = ""
     @State private var password = ""
     @State private var showPassword = false
@@ -23,11 +22,11 @@ struct SignInView: View {
         ZStack {
             
             // Background
-            
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color(red: 0.4, green: 0.6, blue: 1.0),
-                    Color(red: 0.6, green: 0.4, blue: 1.0)
+                    Color.cozyLavender,
+                    Color.softLavender,
+                    Color.paleLavender
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -44,16 +43,16 @@ struct SignInView: View {
                     VStack(spacing: 16) {
                         Image(systemName: "sun.max.fill")
                             .font(.system(size: 80))
-                            .foregroundColor(.white)
+                            .themedForeground("primaryText")
                             .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
                         
                         Text("PosiLife")
                             .font(.system(size: 48, weight: .bold))
-                            .foregroundColor(.white)
+                            .themedForeground("primaryText")
                         
-                        Text(isSignUpMode ? "Create your account" : "Start your journey to positivity")
+                        Text("Start your journey to positivity")
                             .font(.title3)
-                            .foregroundColor(.white.opacity(0.9))
+                            .themedForeground("secondaryText")
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 40)
                     }
@@ -61,87 +60,68 @@ struct SignInView: View {
                     // Email/Password Form
                     
                     VStack(spacing: 16) {
-                        // Username field (only for sign up)
-                        if isSignUpMode {
-                            HStack {
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.white.opacity(0.7))
-                                    .frame(width: 20)
-                                
-                                TextField("Username", text: $username)
-                                    .textContentType(.username)
-                                    .autocapitalization(.none)
-                                    .foregroundColor(.white)
-                            }
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.white.opacity(0.2))
-                            )
-                            .padding(.horizontal, 40)
-                        }
                         
                         // Email field
                         HStack {
                             Image(systemName: "envelope.fill")
-                                .foregroundColor(.white.opacity(0.7))
+                                .themedForeground("secondaryText")
                                 .frame(width: 20)
                             
                             TextField("Email Address", text: $email)
                                 .textContentType(.emailAddress)
                                 .autocapitalization(.none)
                                 .keyboardType(.emailAddress)
-                                .foregroundColor(.white)
+                                .themedForeground("primaryText")
                         }
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.2))
+                                .themedForeground("primaryText")
                         )
                         .padding(.horizontal, 40)
                         
                         // Password field
                         HStack {
                             Image(systemName: "lock.fill")
-                                .foregroundColor(.white.opacity(0.7))
+                                .themedForeground("secondaryText")
                                 .frame(width: 20)
                             
                             if showPassword {
                                 TextField("Password", text: $password)
-                                    .textContentType(isSignUpMode ? .newPassword : .password)
+                                    .textContentType(.password)
                                     .autocapitalization(.none)
-                                    .foregroundColor(.white)
+                                    .themedForeground("primaryText")
                             } else {
                                 SecureField("Password", text: $password)
-                                    .textContentType(isSignUpMode ? .newPassword : .password)
+                                    .textContentType(.password)
                                     .autocapitalization(.none)
-                                    .foregroundColor(.white)
+                                    .themedForeground("primaryText")
                             }
                             
                             Button(action: {
                                 showPassword.toggle()
                             }) {
                                 Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
-                                    .foregroundColor(.white.opacity(0.7))
+                                    .themedForeground("secondaryText")
                             }
                         }
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.2))
+                                .themedForeground("primaryText")
                         )
                         .padding(.horizontal, 40)
                         
-                        // Sign In/Sign Up Button
+                        // Sign In Button
                         Button(action: {
-                            handleEmailPasswordAuth()
+                            handleSignIn()
                         }) {
                             HStack(spacing: 12) {
                                 if isLoading {
                                     ProgressView()
                                         .progressViewStyle(CircularProgressViewStyle(tint: .black))
                                 } else {
-                                    Text(isSignUpMode ? "Create Account" : "Sign In")
+                                    Text("Sign In")
                                         .font(.headline)
                                         .fontWeight(.semibold)
                                 }
@@ -151,26 +131,20 @@ struct SignInView: View {
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    .themedForeground("primaryText")
+                                    .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }
                         .disabled(isLoading)
                         .padding(.horizontal, 40)
                         
-                        // Toggle between Sign In and Sign Up
+                        // Sign Up link
                         Button(action: {
-                            withAnimation {
-                                isSignUpMode.toggle()
-                                // Clear fields when switching
-                                username = ""
-                                email = ""
-                                password = ""
-                            }
+                            showSignUp = true
                         }) {
-                            Text(isSignUpMode ? "Already have an account? Sign In" : "Don't have an account? Sign Up")
+                            Text("Don't have an account? Sign Up")
                                 .font(.subheadline)
-                                .foregroundColor(.white)
+                                .themedForeground("primaryText")
                                 .underline()
                         }
                         .padding(.top, 8)
@@ -179,16 +153,16 @@ struct SignInView: View {
                     // Divider
                     HStack {
                         Rectangle()
-                            .fill(Color.white.opacity(0.3))
+                            .themedForeground("divider")
                             .frame(height: 1)
                         
                         Text("OR")
                             .font(.caption)
-                            .foregroundColor(.white.opacity(0.7))
+                            .themedForeground("secondaryText")
                             .padding(.horizontal, 8)
                         
                         Rectangle()
-                            .fill(Color.white.opacity(0.3))
+                            .themedForeground("divider")
                             .frame(height: 1)
                     }
                     .padding(.horizontal, 40)
@@ -202,18 +176,20 @@ struct SignInView: View {
                             HStack(spacing: 12) {
                                 Image(systemName: "g.circle.fill")
                                     .font(.title2)
+                                    .themedForeground("secondaryText")
                                 
                                 Text("Sign in with Google")
                                     .font(.headline)
                                     .fontWeight(.semibold)
+                                    .themedForeground("primaryText")
                             }
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.white)
-                                    .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+                                    .themedForeground("primaryText")
+                                    .shadow(color: Color.deepLavender.opacity(0.3), radius: 8, x: 0, y: 4)
                             )
                         }
                         .disabled(isLoading)
@@ -221,7 +197,7 @@ struct SignInView: View {
                         
                         Text("By signing in, you agree to our Terms & Privacy Policy")
                             .font(.caption)
-                            .foregroundColor(.white.opacity(0.7))
+                            .themedForeground("secondaryText")
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 40)
                     }
@@ -236,18 +212,17 @@ struct SignInView: View {
                 Text(errorMessage)
             }
         }
+        .sheet(isPresented: $showSignUp) {
+            SignUpView()
+        }
     }
     
-    private func handleEmailPasswordAuth() {
+    private func handleSignIn() {
         isLoading = true
         
         Task {
             do {
-                if isSignUpMode {
-                    try await authManager.signUp(username: username, email: email, password: password)
-                } else {
-                    try await authManager.signIn(email: email, password: password)
-                }
+                try await authManager.signIn(email: email, password: password)
             } catch {
                 authManager.errorMessage = error.localizedDescription
                 showError = true
